@@ -6,7 +6,6 @@
     
     var wins = 0;
     var losses = 0;
-    var ties = 0;
     var left = 9;
     var rand = abc[Math.floor(Math.random() * abc.length)];
    
