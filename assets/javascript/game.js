@@ -1,61 +1,62 @@
-    var rps = ["r", "p", "s"];
-    //randomly chooses one of the 3;
+    
+    
+    var abc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    //randomly chooses an alphabet
     
     
     var wins = 0;
     var losses = 0;
     var ties = 0;
+    var left = 9;
+    var rand = abc[Math.floor(Math.random() * abc.length)];
    
     document.onkeyup = function(event) {
     // Determines which key was pressed.
     var choice = event.key;  
-    var rand = rps[Math.floor(Math.random() * rps.length)];
-    console.log(rand);
     
-
+    console.log(rand);
     
 
    
         
     if (rand === choice){
-        ties++;
+        wins++;
+        alert("You Win! Restarting...");
+        reset();
     }
-    else if (choice === "r" && rand === "p"){
-        losses = losses + 1;
+    else{
+        left--;
+      
     }
-    else if (choice === "r" && rand === "s"){
-        wins = wins + 1;
-        console.log(wins);
-    }
-    else if (choice === "p" && rand === "s"){
-        losses = losses + 1;
-    }
-    else if (choice === "p" && rand === "r"){
-        wins = wins + 1;
-    }
-    else if (choice === "s" && rand === "r"){
-        losses = losses + 1;
-    }
-    else if (choice === "s" && rand === "p"){
-        wins = wins + 1;
+    
+    if (left == 0){
+        left = 0;
+        losses++;
+        alert("You lost! Restarting...");
+        reset();
+       
     }
     
     console.log("User Input " + choice);
     console.log("Computer Input " + rand);
     console.log("wins " + wins);
     console.log("losses " + losses);
-    console.log("ties " + ties);
+
     
 
     var userInput = document.getElementById("userInput");
-    userInput.innerHTML = "User Input: "+ choice;
+    userInput.innerHTML += choice + " ";
     var cpuInput = document.getElementById("cpuInput");
-    cpuInput.innerHTML = "Computer Input: "+ rand;
+    cpuInput.innerHTML = "Guesses Left: "+ left
     var winDisp = document.getElementById("winDisp");
-    winDisp.innerHTML = "wins: "+ wins;
+    winDisp.innerHTML = "Wins: "+ wins;
     var loseDisp = document.getElementById("loseDisp");
-    loseDisp.innerHTML = "losses: "+ losses;
-    var tieDisp = document.getElementById("tieDisp");
-    tieDisp.innerHTML = "ties: " + ties;
+    loseDisp.innerHTML = "Losses: "+ losses;
     
+    function reset(){
+        left = 9;
+        choice = " ";
+        rand = abc[Math.floor(Math.random() * abc.length)];
+        document.getElementById("userInput").textContent = " ";
+    }
     }

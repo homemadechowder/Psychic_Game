@@ -1,2 +1,1 @@
-# Word_Guess_Game
-Hangman basically
+# Psychic Game
